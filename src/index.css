@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Calistoga&family=Inter:wght@300;400;500;600;700&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  /* ── Brand palette ─────────────────────────────── */
+  --color-forest: #2f5d50;
+  --color-forest-deep: #244a40;
+  --color-forest-soft: #e7efec;
+  --color-wood: #8b5e3c;
+  --color-wood-deep: #6f4a2f;
+  --color-wood-soft: #f3e9df;
+  --color-teal: #3a7d7c;
+  --color-teal-soft: #e3f0ef;
+  --color-cream: #f9f6f1;
+  --color-cream-deep: #f1eae0;
+  --color-ink: #2c2c2c;
+  --color-ink-soft: #5f5f5a;
+
+  /* ── Type ──────────────────────────────────────── */
+  --font-display: 'Calistoga', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+
+  /* ── Motion ────────────────────────────────────── */
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--color-cream);
+}
+
+body {
+  @apply bg-cream text-ink font-sans antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+
+a, button, input, select { cursor: pointer; }
+
+.custom-cursor {
+  position: fixed;
+  z-index: 100;
+  width: 18px;
+  height: 18px;
+  margin: -9px 0 0 -9px;
+  border: 1.5px solid #fff;
+  border-radius: 999px;
+  background: rgba(246, 184, 46, 0.45);
+  mix-blend-mode: difference;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 180ms ease, background 180ms ease;
+}
+
+.custom-cursor.is-visible { opacity: 1; }
+.custom-cursor.is-hovering { background: #fff; }
+
+@media (pointer: fine) {
+  body, a, button { cursor: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .journey { height: 100svh; }
+}
+
+::selection {
+  background: var(--color-forest);
+  color: var(--color-cream);
+}
+
+/* ── Rainbow accent utilities ───────────────────────────
+   Subtle decorative gradient used sparingly (brand nod). */
+.rainbow-text {
+  background-image: linear-gradient(
+    92deg,
+    #e15759 0%,
+    #f28e2b 20%,
+    #edc948 38%,
+    #59a14f 56%,
+    #4e79a7 74%,
+    #b07aa1 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.rainbow-bar {
+  background-image: linear-gradient(
+    90deg,
+    #e15759,
+    #f28e2b,
+    #edc948,
+    #59a14f,
+    #4e79a7,
+    #b07aa1
+  );
+}
+
+.rainbow-underline {
+  background-image: linear-gradient(
+    90deg,
+    #e15759 0%,
+    #f28e2b 22%,
+    #edc948 40%,
+    #59a14f 58%,
+    #4e79a7 78%,
+    #b07aa1 100%
+  );
+  background-repeat: no-repeat;
+  background-size: 100% 3px;
+  background-position: 0 100%;
+}
+
+/* Thin scrollbar to match the warm aesthetic */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-cream);
+}
+::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--color-forest) 55%, var(--color-cream));
+  border-radius: 999px;
+  border: 2px solid var(--color-cream);
+}
