@@ -1,7 +1,7 @@
-# Rainbow Cottages Ooty — Landing Page
+# Rainbow Cottages Ooty
 
 A warm, conversion-focused single-page site for Rainbow Cottages Ooty, built with
-**Vite + React + TypeScript**, **Tailwind CSS v4**, **Framer Motion**, and **lucide-react** icons.
+**Vite + React + TypeScript**, **Tailwind CSS v4**, **GSAP**, **Lenis**, **Framer Motion**, **Rive**, and **React Spring**.
 
 ## Getting started
 
@@ -18,8 +18,8 @@ Almost all content lives in **`src/data/site.ts`** — update it in one place:
 
 | What | Where |
 | --- | --- |
-| Phone numbers, email, address | `CONTACT` (search the `TODO` comment) |
-| Photos | `IMAGES`, `ROOMS`, `GALLERY` — currently Unsplash hotlinks, swap in real property photos |
+| Phone numbers, email, address | `CONTACT` |
+| Photos | `IMAGES`, `ROOMS`, `GALLERY` |
 | Rooms & in-room amenities | `ROOMS` |
 | Amenities grid | `AMENITIES` |
 | Nearby attractions & distances | `NEARBY` |
@@ -29,8 +29,7 @@ Brand colors, fonts, and the rainbow accent utilities (`.rainbow-text`, `.rainbo
 `.rainbow-underline`) are defined in **`src/index.css`** under `@theme`.
 
 Shared animation variants (`fadeUp`, `stagger`, `VIEWPORT`, …) live in **`src/lib/motion.ts`**.
-All scroll animations use `whileInView` with `once: true`, and looping/parallax motion respects
-`prefers-reduced-motion`.
+Motion respects `prefers-reduced-motion`, and the interactive journey is loaded separately from the initial page.
 
 ## Structure
 
@@ -44,6 +43,7 @@ src/
     ├── Navbar.tsx           # fixed nav, glass on scroll, mobile menu
     ├── Hero.tsx             # parallax bg, animated headline, floating CTA
     ├── About.tsx            # split layout + highlight cards
+    ├── Journey.tsx          # GSAP pinned bus journey + Rive detail
     ├── Rooms.tsx / RoomCard.tsx
     ├── Amenities.tsx
     ├── Location.tsx         # address, nearby list, map card
